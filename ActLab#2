@@ -1,0 +1,9 @@
+name = input("What is your name:")
+age = int(input("What is your age:"))
+address = input("May i ask where do you live?:")
+age += 1
+
+print(f"Good Morning! {name}")
+print("HAPPY BIRTHDAY 🥳")
+print(f"you are now {age} years old!!")
+print(f"We will visit you at {address} to celebrate!! ")
