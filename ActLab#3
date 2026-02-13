@@ -1,0 +1,7 @@
+correct_password = "gwapoko123"
+entered_password = input("Enter your password:")
+
+if enterd_password == correct_password:
+    print("Logged in")
+else:
+    print("Access Denied")
