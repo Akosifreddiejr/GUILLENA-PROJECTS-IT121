@@ -1,0 +1,89 @@
+class Item:
+    def __init__(self, name, price, quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def get_total(self):
+        return self.price * self.quantity
+
+
+class ShoppingCart:
+    def __init__(self):
+        self.cart = []
+
+    def add_item(self, item):
+        self.cart.append(item)
+        print(f"{item.name} added to cart.")
+
+    def view_cart(self):
+        if not self.cart:
+            print("Your cart is empty.")
+            return
+        
+        total = 0
+        print("\n--- Your Cart ---")
+        for item in self.cart:
+            subtotal = item.get_total()
+            total += subtotal
+            print(f"{item.name} - ₱{item.price} x {item.quantity} = ₱{subtotal}")
+
+        print(f"Total: ₱{total}")
+
+    def remove_item(self, name):
+        for item in self.cart:
+            if item.name.lower() == name.lower():
+                self.cart.remove(item)
+                print(f"{name} removed from cart.")
+                return
+        print("Item not found in cart.")
+
+    def checkout(self):
+        if not self.cart:
+            print("Your cart is empty.")
+            return
+        
+        total = sum(item.get_total() for item in self.cart)
+        print("\nTotal amount to pay: ₱", total)
+        print("Thank you for shopping!")
+
+
+def show_menu():
+    print("\n--- Shopping Cart Menu ---")
+    print("1. Add Item")
+    print("2. View Cart")
+    print("3. Remove Item")
+    print("4. Checkout")
+    print("5. Exit")
+
+
+cart = ShoppingCart()
+
+while True:
+    show_menu()
+    choice = input("Choose an option: ")
+
+    if choice == "1":
+        name = input("Enter item name: ")
+        price = float(input("Enter item price: "))
+        quantity = int(input("Enter quantity: "))
+        
+        item = Item(name, price, quantity)  # object created
+        cart.add_item(item)
+
+    elif choice == "2":
+        cart.view_cart()
+
+    elif choice == "3":
+        name = input("Enter item name to remove: ")
+        cart.remove_item(name)
+
+    elif choice == "4":
+        cart.checkout()
+
+    elif choice == "5":
+        print("Exiting program...")
+        break
+
+    else:
+        print("Invalid choice. Try again.")
