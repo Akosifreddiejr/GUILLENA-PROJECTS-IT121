@@ -1,0 +1,54 @@
+def withdrawal_system():
+    balance = 1000
+
+    while True:
+        try:
+            print("\n=== Money Withdrawal System ===")
+            print("1. Withdraw Money")
+            print("2. Check Balance")
+            print("3. Exit")
+
+            choice = int(input("Enter your choice: "))
+
+            if choice == 1:
+                amount = float(input("Enter amount to withdraw: "))
+
+                if amount > balance:
+                    print("Error: Insufficient funds!")
+
+                    print("\nOptions:")
+                    print("1. Try again")
+                    print("2. Check balance")
+                    print("3. Exit")
+
+                    option = int(input("Choose an option: "))
+
+                    if option == 1:
+                        continue
+                    elif option == 2:
+                        print(f"Current balance: ₱{balance}")
+                    elif option == 3:
+                        print("Exiting program...")
+                        break
+                    else:
+                        print("Invalid option!")
+
+                else:
+                    balance -= amount
+                    print(f"Withdrawal successful! Remaining balance: ₱{balance}")
+
+            elif choice == 2:
+                print(f"Current balance: ₱{balance}")
+
+            elif choice == 3:
+                print("Thank you! Exiting program...")
+                break
+
+            else:
+                print("Invalid choice! Please try again.")
+
+        except ValueError:
+            print("Invalid input! Please enter numbers only.")
+
+
+withdrawal_system()
