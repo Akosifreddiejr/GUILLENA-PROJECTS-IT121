@@ -1,5 +1,5 @@
 def withdrawal_system():
-    balance = 1000
+    balance = 15180
 
     while True:
         try:
